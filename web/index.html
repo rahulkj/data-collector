@@ -16,12 +16,11 @@
 	<h1>PCF Data Collection Sheet</h1>
 
 	<div class="panel panel-primary">
-			<div class="panel-heading">
-    		<h3 class="panel-title"><a href="#" ng-model="section1" ng-click="section1=!section1">VMWare vSphere client - vSphere Client Information (Administrator Account)</a></h3>
-  		</div>
-		</a>
+		<div class="panel-heading">
+  		<h3 class="panel-title"><a href="#" ng-model="section1" ng-click="section1=!section1">VMWare vSphere client - vSphere Client Information (Administrator Account)</a></h3>
+		</div>
 
-		<div ng-show="section1">
+		<div ng-show="section1" id="section1">
 			<form class="form-horizontal" role="form">
 	  		<div class="form-group">
 			    <label for="vcenterAddress" class="col-sm-4 control-label">Address</label>
@@ -464,6 +463,8 @@
 		</div>
 	</div>
 
+	<button class="btn btn-primary pull-right" onClick="javascript:validate()">Validate</button>
+
 	<button class="btn btn-primary pull-right">
 		<i class="fa fa-plus"></i> Save
 	</button>
@@ -475,6 +476,16 @@
 	myapp.controller("MainCtl", ["$scope", "$resource", function($scope, $resource){
 
 	}]);
+
+	function validate() {
+		var section1 = document.getElementById("section1");
+		var fields = section1.getElementsByClassName("form-control");
+		for(var i = 0; i < fields.length; i++) {
+			if(fields[i].value == "") {
+				alert("please enter value for " + fields[i].id)
+			}
+		}
+	}
 
 </script>
 </body>

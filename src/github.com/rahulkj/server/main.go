@@ -6,8 +6,13 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
+	"os"
 	"github.com/gorilla/mux"
+)
+
+const (
+	HostVar = "VCAP_APP_HOST"
+	PortVar = "VCAP_APP_PORT"
 )
 
 // error response contains everything we need to use http.Error
@@ -53,8 +58,6 @@ func (fn handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// command line flags
-	port := flag.Int("port", 9999, "port to serve on")
 	dir := flag.String("directory", "web/", "directory of web files")
 	flag.Parse()
 
@@ -68,10 +71,12 @@ func main() {
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static", fileHandler))
 	http.Handle("/", router)
 
-	log.Printf("Running on port %d\n", *port)
-
-	addr := fmt.Sprintf("127.0.0.1:%d", *port)
-	// this call blocks -- the progam runs here forever
-	err := http.ListenAndServe(addr, nil)
-	fmt.Println(err.Error())
+	var port string
+	if port = os.Getenv(PortVar); port == "" {
+		port = "8080"
+	}
+	log.Printf("Listening at port %v\n", port)
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
+		panic(err)
+	}
 }
