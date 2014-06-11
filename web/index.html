@@ -4,349 +4,465 @@
 	<meta charset="UTF-8">
 	<title>PCF - Installation Data Collector</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/slate/bootstrap.min.css">
+	<link rel="stylesheet" href="css/cyborg/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 </head>
 <!-- putting this at the top to remove the jarring load -->
 <script src="scripts/angular.min.js"></script>
 <script src="scripts/angular-resource.min.js"></script>
-<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+<script src="scripts/ui-bootstrap-tpls-0.11.0.min.js"></script>
 <body ng-controller="MainCtl">
 
 	<h1>PCF Data Collection Sheet</h1>
 
-	<div class="container-fluid">
-		<h3>VMWare vSphere client <small>vSphere Client Information (Administrator Account)</small> </h3>
+	<div class="panel panel-default">
+		<a href="#" ng-model="section1" ng-click="section1=!section1">
+			<div class="panel-heading">
+    		VMWare vSphere client - <small>vSphere Client Information (Administrator Account)</small>
+  		</div>
+		</a>
 
-		<form class="form-horizontal" role="form">
-  		<div class="form-group">
-		    <label for="vcenterAddress" class="col-sm-4 control-label">Address</label>
-		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="vcenterAddress" placeholder="vCenter IP/Hostname">
-		    </div>
-		  </div>
-			<div class="form-group">
-				<label for="username" class="col-sm-4 control-label">Username</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="username" placeholder="vCenter Username">
+		<div ng-show="section1">
+			<form class="form-horizontal" role="form">
+	  		<div class="form-group">
+			    <label for="vcenterAddress" class="col-sm-4 control-label">Address</label>
+			    <div class="col-sm-4">
+			      <input type="text" class="form-control" id="vcenterAddress" placeholder="vCenter IP/Hostname">
+			    </div>
+			  </div>
+				<div class="form-group">
+					<label for="username" class="col-sm-4 control-label">Username</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="username" placeholder="vCenter Username">
+					</div>
 				</div>
-			</div>
-		  <div class="form-group">
-		    <label for="vcenterPassword" class="col-sm-4 control-label">Password</label>
-		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="vcenterPassword" placeholder="vcenter Password">
-		    </div>
-		  </div>
-		</form>
+			  <div class="form-group">
+			    <label for="vcenterPassword" class="col-sm-4 control-label">Password</label>
+			    <div class="col-sm-4">
+			      <input type="text" class="form-control" id="vcenterPassword" placeholder="vcenter Password">
+			    </div>
+			  </div>
+			</form>
+		</div>
 	</div>
 
-	<div class="container-fluid">
-		<h3>Ops Manager Configuration <small>Ops Manager Configuration Parameters</small></h3>
+	<div class="panel panel-default">
+		<a href="#" ng-model="section2" ng-click="section2=!section2">
+			<div class="panel-heading">
+				Ops Manager Configuration - <small>Ops Manager Configuration Parameters</small>
+			</div>
+		</a>
 
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="opsMgrIPAddress" class="col-sm-4 control-label">Ops Manager IP Address</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="opsMgrIPAddress" placeholder="Ops Manager IP Address">
+		<div ng-show="section2">
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="opsMgrIPAddress" class="col-sm-4 control-label">Ops Manager IP Address</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="opsMgrIPAddress" placeholder="Ops Manager IP Address">
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="subnetMask" class="col-sm-4 control-label">Subnet Mask</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="subnetMask" placeholder="Network Subnet Mask">
+				<div class="form-group">
+					<label for="subnetMask" class="col-sm-4 control-label">Subnet Mask</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="subnetMask" placeholder="Network Subnet Mask">
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="defaultGateway" class="col-sm-4 control-label">Default Gateway</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="defaultGateway" placeholder="Default Gateway">
+				<div class="form-group">
+					<label for="defaultGateway" class="col-sm-4 control-label">Default Gateway</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="defaultGateway" placeholder="Default Gateway">
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="dnsServers" class="col-sm-4 control-label">DNS Server/s</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="dnsServers" placeholder="DNS Servers (Comma seperated)">
+				<div class="form-group">
+					<label for="dnsServers" class="col-sm-4 control-label">DNS Server/s</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="dnsServers" placeholder="DNS Servers (Comma seperated)">
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="ntpServers" class="col-sm-4 control-label">NTP Server/s</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="ntpServers" placeholder="NTP Servers (Comma Seperated)">
+				<div class="form-group">
+					<label for="ntpServers" class="col-sm-4 control-label">NTP Server/s</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="ntpServers" placeholder="NTP Servers (Comma Seperated)">
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="opsMgrPassword" class="col-sm-4 control-label">Password</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="opsMgrPassword" placeholder="Password for OPS Manager VM">
+				<div class="form-group">
+					<label for="opsMgrPassword" class="col-sm-4 control-label">Password</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="opsMgrPassword" placeholder="Password for OPS Manager VM">
+					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 
-	<div class="container-fluid">
-		<h3>OPS Manager Director <small>OPS Manager Director Configuration </small></h3>
-		<h4>vCenter Details (vSphere Service Account):</h4>
+	<div class="panel panel-default">
+		<a href="#" ng-model="section3" ng-click="section3=!section3">
+			<div class="panel-heading">
+				OPS Manager Director - <small>Ops Manager Director Configuration </small>
+			</div>
+		</a>
 
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="vcenterAddress" class="col-sm-4 control-label">Address</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="vcenterAddress" placeholder="vCenter IP/Hostname">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="svrusername" class="col-sm-4 control-label">Username</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="svrusername" placeholder="vCenter Username">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="vcenterPassword" class="col-sm-4 control-label">Password</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="vcenterPassword" placeholder="vcenter Password">
-				</div>
-			</div>
-		</form>
+		<div ng-show="section3">
 
+			<div class="panel panel-primary">
+				<a href="#" ng-model="subsection3.1" ng-click="subsection3.1=!subsection3.1">
+					<div class="panel-heading">
+						vCenter Details (vSphere Service Account)
+					</div>
+				</a>
 
-		<h4>vSphere Configuration:</h4>
+				<div ng-show="subsection3.1">
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label for="vcenterAddress" class="col-sm-4 control-label">Address</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="vcenterAddress" placeholder="vCenter IP/Hostname">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="svrusername" class="col-sm-4 control-label">Username</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="svrusername" placeholder="vCenter Username">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="vcenterPassword" class="col-sm-4 control-label">Password</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="vcenterPassword" placeholder="vcenter Password">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="vcenterDatacenterName" class="col-sm-4 control-label">Datacenter Name</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="vcenterDatacenterName" placeholder="vCenter Datacenter Name">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="vcenterClusterName" class="col-sm-4 control-label">Cluster Name</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="vcenterClusterName" placeholder="vCenter Cluster Name">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="vcenterDatastoreNames" class="col-sm-4 control-label">Data Store Name</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="vcenterDatastoreNames" placeholder="vcenter Data Store Name/s">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="vcenterResourcePoolName" class="col-sm-4 control-label">Resource Pool Name</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="vcenterResourcePoolName" placeholder="vcenter Resource Pool Name">
-				</div>
-			</div>
-		</form>
+			<div class="panel panel-primary">
+				<a href="#" ng-model="subsection3.2" ng-click="subsection3.2=!subsection3.2">
+					<div class="panel-heading">
+						vSphere Configuration
+					</div>
+				</a>
 
-		<h4>vSphere Network Configuration:</h4>
+				<div ng-show="subsection3.2">
 
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="vcenterNetworkName" class="col-sm-4 control-label">vSphere Network Name</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="vcenterNetworkName" placeholder="vCenter Network Name">
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label for="vcenterDatacenterName" class="col-sm-4 control-label">Datacenter Name</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="vcenterDatacenterName" placeholder="vCenter Datacenter Name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="vcenterClusterName" class="col-sm-4 control-label">Cluster Name</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="vcenterClusterName" placeholder="vCenter Cluster Name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="vcenterDatastoreNames" class="col-sm-4 control-label">Data Store Name</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="vcenterDatastoreNames" placeholder="vcenter Data Store Name/s">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="vcenterResourcePoolName" class="col-sm-4 control-label">Resource Pool Name</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="vcenterResourcePoolName" placeholder="vcenter Resource Pool Name">
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
-			<div class="form-group">
-				<label for="vcenterSubnet" class="col-sm-4 control-label">Subnet</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="vcenterSubnet" placeholder="vCenter Subnet with Mask, ex: 10.10.10.10/23">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="excludedIPRanges" class="col-sm-4 control-label">Excluded IP Ranges</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="excludedIPRanges" placeholder="Excluded IP Ranges">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="dnsServers" class="col-sm-4 control-label">DNS Server/s</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="dnsServers" placeholder="DNS Servers (comma seperated)">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="gateway" class="col-sm-4 control-label">Gateway</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="gateway" placeholder="Gateway">
-				</div>
-			</div>
-		</form>
 
-		<h4>NTP Servers Configuration:</h4>
+			<div class="panel panel-primary">
+				<a href="#" ng-model="subsection3.3" ng-click="subsection3.3=!subsection3.3">
+					<div class="panel-heading">
+						vSphere Network Configuration
+					</div>
+				</a>
 
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="ntpServer" class="col-sm-4 control-label">NTP Server/s</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="ntpServer" placeholder="NTP Server (comma seperated)">
+				<div ng-show="subsection3.3">
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label for="vcenterNetworkName" class="col-sm-4 control-label">vSphere Network Name</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="vcenterNetworkName" placeholder="vCenter Network Name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="vcenterSubnet" class="col-sm-4 control-label">Subnet</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="vcenterSubnet" placeholder="vCenter Subnet with Mask, ex: 10.10.10.10/23">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="excludedIPRanges" class="col-sm-4 control-label">Excluded IP Ranges</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="excludedIPRanges" placeholder="Excluded IP Ranges">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="dnsServers" class="col-sm-4 control-label">DNS Server/s</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="dnsServers" placeholder="DNS Servers (comma seperated)">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="gateway" class="col-sm-4 control-label">Gateway</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="gateway" placeholder="Gateway">
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
-		</form>
+
+			<div class="panel panel-primary">
+				<a href="#" ng-model="subsection3.4" ng-click="subsection3.4=!subsection3.4">
+					<div class="panel-heading">
+						NTP Servers Configuration
+					</div>
+				</a>
+
+				<div ng-show="subsection3.4">
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label for="ntpServer" class="col-sm-4 control-label">NTP Server/s</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="ntpServer" placeholder="NTP Server (comma seperated)">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<div class="container-fluid">
-		<h3>Elastic Runtime Tile <small> Elastic Runtime Tile Configuration </small></h3>
-		<h4>HAProxy Configuration</h4>
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="haproxyIPs" class="col-sm-4 control-label">HAProxy IP/s</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="haproxyIPs" placeholder="HAProxy IP (Comma Seperated)">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="systemDomain" class="col-sm-4 control-label">PCF system domain</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="systemDomain" placeholder="PCF system domain">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="applicationDomain" class="col-sm-4 control-label">PCF applications domain</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="applicationDomain" placeholder="PCF applications domain">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="publicCert" class="col-sm-4 control-label">Public Certificate</label>
-				<div class="col-sm-4">
-					<input type="textbox" class="form-control" id="publicCert" placeholder="Public certificate used for generating the wild card certificates">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="privateCert" class="col-sm-4 control-label">Private Certificate</label>
-				<div class="col-sm-4">
-					<input type="textbox" class="form-control" id="privateCert" placeholder="Private certificate generated for the wild card certificates">
-				</div>
-			</div>
-		</form>
+	<div class="panel panel-default">
 
-		<h4>Cloud Controller Configuration</h4>
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="ccSystemDomain" class="col-sm-4 control-label">System Domain</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="ccSystemDomain" placeholder="Cloud Controller System Domain">
+			<a href="#" ng-model="section4" ng-click="section4=!section4">
+				<div class="panel-heading">
+					Elastic Runtime Tile -<small> Elastic Runtime Tile Configuration </small>
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="ccAppsDomain" class="col-sm-4 control-label">Application domain</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="ccAppsDomain" placeholder="Cloud Controller Applications Domain">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="ccDBEncryptionKey" class="col-sm-4 control-label">Cloud Controller DB Encryption Key</label>
-				<div class="col-sm-4">
-					<input type="textbox" class="form-control" id="ccDBEncryptionKey" placeholder="Cloud Controller DB Encryption Key">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="maxFileSize" class="col-sm-4 control-label">Maximum file upload size (MB)</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="maxFileSize" placeholder="Maximum file upload size (MB), ie: Application max size with all binaries">
-				</div>
-			</div>
-		</form>
+			</a>
 
-		<h4>Router IP/s</h4>
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="routerIPs" class="col-sm-4 control-label">Router IP/s</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="routerIPs" placeholder="Router IP (Comma Seperated)">
-				</div>
-			</div>
-		</form>
+			<div ng-show="section4">
 
-		<h4>SSO Login<small> Single Sign-on Configuration </small></h4>
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="ssoURL" class="col-sm-4 control-label">SSO URL</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="ssoURL" placeholder="SSO URL">
-				</div>
-			</div>
-		</form>
+				<div class="panel panel-primary">
+					<a href="#" ng-model="subsection4.1" ng-click="subsection4.1=!subsection4.1">
+						<div class="panel-heading">
+							HAProxy Configuration
+						</div>
+					</a>
 
-		<h4>Web Console<small> Email Server Configuration </small></h4>
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="replyToEmail" class="col-sm-4 control-label">Reply-To Email</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="replyToEmail" placeholder="Reply-To Email Address">
+					<div ng-show="subsection4.1">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="haproxyIPs" class="col-sm-4 control-label">HAProxy IP/s</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="haproxyIPs" placeholder="HAProxy IP (Comma Seperated)">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="systemDomain" class="col-sm-4 control-label">PCF system domain</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="systemDomain" placeholder="PCF system domain">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="applicationDomain" class="col-sm-4 control-label">PCF applications domain</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="applicationDomain" placeholder="PCF applications domain">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="publicCert" class="col-sm-4 control-label">Public Certificate</label>
+								<div class="col-sm-4">
+									<input type="textbox" class="form-control" id="publicCert" placeholder="Public certificate used for generating the wild card certificates">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="privateCert" class="col-sm-4 control-label">Private Certificate</label>
+								<div class="col-sm-4">
+									<input type="textbox" class="form-control" id="privateCert" placeholder="Private certificate generated for the wild card certificates">
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="fromEmail" class="col-sm-4 control-label">From Email</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="fromEmail" placeholder="From Email Address">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="smtpServerAddress" class="col-sm-4 control-label">Address of SMTP Server</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="smtpServerAddress" placeholder="SMTP Server Address">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="smtpServerPort" class="col-sm-4 control-label">Port of SMTP Server</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="smtpServerPort" placeholder="SMTP Server Port">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="heloDomain" class="col-sm-4 control-label">HELO Domain</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="heloDomain" placeholder="HELO Domain">
-				</div>
-			</div>
 
-			<div class="form-group">
-				<label for="smtpAuthRequired" class="col-sm-4 control-label">SMTP Authentication Required?</label>
-				<div class="col-sm-4">
-					<input type="checkbox" class="form-control" id="smtpAuthRequired">
-				</div>
-			</div>
-		</form>
+				<div class="panel panel-primary">
+					<a href="#" ng-model="subsection4.2" ng-click="subsection4.2=!subsection4.2">
+						<div class="panel-heading">
+							Cloud Controller Configuration
+						</div>
+					</a>
 
-		<h4>SMTP Server Credentials</h4>
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="smtpServerUsername" class="col-sm-4 control-label">SMTP Server Username</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="smtpServerUsername" placeholder="SMTP Server Username">
+					<div ng-show="subsection4.2">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="ccSystemDomain" class="col-sm-4 control-label">System Domain</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="ccSystemDomain" placeholder="Cloud Controller System Domain">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="ccAppsDomain" class="col-sm-4 control-label">Application domain</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="ccAppsDomain" placeholder="Cloud Controller Applications Domain">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="ccDBEncryptionKey" class="col-sm-4 control-label">Cloud Controller DB Encryption Key</label>
+								<div class="col-sm-4">
+									<input type="textbox" class="form-control" id="ccDBEncryptionKey" placeholder="Cloud Controller DB Encryption Key">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="maxFileSize" class="col-sm-4 control-label">Maximum file upload size (MB)</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="maxFileSize" placeholder="Maximum file upload size (MB), ie: Application max size with all binaries">
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="smtpServerPassword" class="col-sm-4 control-label">SMTP Server Password</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="smtpServerPassword" placeholder="SMTP Server Password">
-				</div>
-			</div>
-	  </form>
 
-		<h4>Quota Settings</h4>
-		<form class="form-horizontal" role="form">
-			<div class="form-group">
-				<label for="appMemory" class="col-sm-4 control-label">App Memory (MB)</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="appMemory" placeholder="App Memory (MB)">
+				<div class="panel panel-primary">
+					<a href="#" ng-model="subsection4.3" ng-click="subsection4.3=!subsection4.3">
+						<div class="panel-heading">
+							Router IP/s
+						</div>
+					</a>
+
+					<div ng-show="subsection4.3">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="routerIPs" class="col-sm-4 control-label">Router IP/s</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="routerIPs" placeholder="Router IP (Comma Seperated)">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="panel panel-primary">
+					<a href="#" ng-model="subsection4.4" ng-click="subsection4.4=!subsection4.4">
+						<div class="panel-heading">
+							SSO Login -<small> Single Sign-on Configuration </small>
+						</div>
+					</a>
+
+					<div ng-show="subsection4.4">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="ssoURL" class="col-sm-4 control-label">SSO URL</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="ssoURL" placeholder="SSO URL">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="panel panel-primary">
+					<a href="#" ng-model="subsection4.5" ng-click="subsection4.5=!subsection4.5">
+						<div class="panel-heading">
+							Web Console -<small> Email Server Configuration </small>
+						</div>
+					</a>
+
+					<div ng-show="subsection4.5">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="replyToEmail" class="col-sm-4 control-label">Reply-To Email</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="replyToEmail" placeholder="Reply-To Email Address">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="fromEmail" class="col-sm-4 control-label">From Email</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="fromEmail" placeholder="From Email Address">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="smtpServerAddress" class="col-sm-4 control-label">Address of SMTP Server</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="smtpServerAddress" placeholder="SMTP Server Address">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="smtpServerPort" class="col-sm-4 control-label">Port of SMTP Server</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="smtpServerPort" placeholder="SMTP Server Port">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="heloDomain" class="col-sm-4 control-label">HELO Domain</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="heloDomain" placeholder="HELO Domain">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="smtpAuthRequired" class="col-sm-4 control-label">SMTP Authentication Required?</label>
+								<div class="col-sm-4">
+									<input type="checkbox" ng-model="smtpAuthRequired" id="smtpAuthRequired">
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="check-element animate-hide" ng-show="smtpAuthRequired">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="smtpServerUsername" class="col-sm-4 control-label">SMTP Server Username</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="smtpServerUsername" placeholder="SMTP Server Username">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="smtpServerPassword" class="col-sm-4 control-label">SMTP Server Password</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="smtpServerPassword" placeholder="SMTP Server Password">
+								</div>
+							</div>
+					  </form>
+					</div>
+				</div>
+
+				<div class="panel panel-primary">
+					<a href="#" ng-model="subsection4.6" ng-click="subsection4.6=!subsection4.6">
+						<div class="panel-heading">
+							Quota Settings
+						</div>
+					</a>
+
+					<div ng-show="subsection4.6">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="appMemory" class="col-sm-4 control-label">App Memory (MB)</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="appMemory" placeholder="App Memory (MB)">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="serviceInstances" class="col-sm-4 control-label">Service Instances</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="serviceInstances" placeholder="Service Instances">
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
-			<div class="form-group">
-				<label for="serviceInstances" class="col-sm-4 control-label">Service Instances</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="serviceInstances" placeholder="Service Instances">
-				</div>
-			</div>
-		</form>
+		</div>
 	</div>
 
-	<button class="btn btn-primary">
+	<button class="btn btn-primary pull-right">
 		<i class="fa fa-plus"></i> Save
 	</button>
-
 <script>
 	// new dependency: ngResource is included just above
 	var myapp = new angular.module("myapp", ["ngResource"]);
