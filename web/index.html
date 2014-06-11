@@ -3,9 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>PCF - Installation Data Collector</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/cyborg/bootstrap.min.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- <link rel="stylesheet" href="css/cyborg/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
 </head>
 <!-- putting this at the top to remove the jarring load -->
 <script src="scripts/angular.min.js"></script>
@@ -15,10 +15,9 @@
 
 	<h1>PCF Data Collection Sheet</h1>
 
-	<div class="panel panel-default">
-		<a href="#" ng-model="section1" ng-click="section1=!section1">
+	<div class="panel panel-primary">
 			<div class="panel-heading">
-    		VMWare vSphere client - <small>vSphere Client Information (Administrator Account)</small>
+    		<h3 class="panel-title"><a href="#" ng-model="section1" ng-click="section1=!section1">VMWare vSphere client - vSphere Client Information (Administrator Account)</a></h3>
   		</div>
 		</a>
 
@@ -46,12 +45,14 @@
 		</div>
 	</div>
 
-	<div class="panel panel-default">
-		<a href="#" ng-model="section2" ng-click="section2=!section2">
-			<div class="panel-heading">
-				Ops Manager Configuration - <small>Ops Manager Configuration Parameters</small>
-			</div>
-		</a>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<a href="#" ng-model="section2" ng-click="section2=!section2">
+					Ops Manager Configuration - Ops Manager Configuration Parameters
+				</a>
+			</h3>
+		</div>
 
 		<div ng-show="section2">
 			<form class="form-horizontal" role="form">
@@ -95,16 +96,18 @@
 		</div>
 	</div>
 
-	<div class="panel panel-default">
-		<a href="#" ng-model="section3" ng-click="section3=!section3">
-			<div class="panel-heading">
-				OPS Manager Director - <small>Ops Manager Director Configuration </small>
-			</div>
-		</a>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<a href="#" ng-model="section3" ng-click="section3=!section3">
+					OPS Manager Director - Ops Manager Director Configuration
+				</a>
+			</h3>
+		</div>
 
 		<div ng-show="section3">
 
-			<div class="panel panel-primary">
+			<div class="panel panel-info">
 				<a href="#" ng-model="subsection3.1" ng-click="subsection3.1=!subsection3.1">
 					<div class="panel-heading">
 						vCenter Details (vSphere Service Account)
@@ -135,7 +138,7 @@
 				</div>
 			</div>
 
-			<div class="panel panel-primary">
+			<div class="panel panel-info">
 				<a href="#" ng-model="subsection3.2" ng-click="subsection3.2=!subsection3.2">
 					<div class="panel-heading">
 						vSphere Configuration
@@ -173,7 +176,7 @@
 				</div>
 			</div>
 
-			<div class="panel panel-primary">
+			<div class="panel panel-info">
 				<a href="#" ng-model="subsection3.3" ng-click="subsection3.3=!subsection3.3">
 					<div class="panel-heading">
 						vSphere Network Configuration
@@ -216,7 +219,7 @@
 				</div>
 			</div>
 
-			<div class="panel panel-primary">
+			<div class="panel panel-info">
 				<a href="#" ng-model="subsection3.4" ng-click="subsection3.4=!subsection3.4">
 					<div class="panel-heading">
 						NTP Servers Configuration
@@ -237,17 +240,18 @@
 		</div>
 	</div>
 
-	<div class="panel panel-default">
-
-			<a href="#" ng-model="section4" ng-click="section4=!section4">
-				<div class="panel-heading">
-					Elastic Runtime Tile -<small> Elastic Runtime Tile Configuration </small>
-				</div>
-			</a>
+	<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a href="#" ng-model="section4" ng-click="section4=!section4">
+						Elastic Runtime Tile - Elastic Runtime Tile Configuration
+					</a>
+				</h3>
+			</div>
 
 			<div ng-show="section4">
 
-				<div class="panel panel-primary">
+				<div class="panel panel-info">
 					<a href="#" ng-model="subsection4.1" ng-click="subsection4.1=!subsection4.1">
 						<div class="panel-heading">
 							HAProxy Configuration
@@ -290,7 +294,7 @@
 					</div>
 				</div>
 
-				<div class="panel panel-primary">
+				<div class="panel panel-info">
 					<a href="#" ng-model="subsection4.2" ng-click="subsection4.2=!subsection4.2">
 						<div class="panel-heading">
 							Cloud Controller Configuration
@@ -327,7 +331,7 @@
 					</div>
 				</div>
 
-				<div class="panel panel-primary">
+				<div class="panel panel-info">
 					<a href="#" ng-model="subsection4.3" ng-click="subsection4.3=!subsection4.3">
 						<div class="panel-heading">
 							Router IP/s
@@ -346,10 +350,10 @@
 					</div>
 				</div>
 
-				<div class="panel panel-primary">
+				<div class="panel panel-info">
 					<a href="#" ng-model="subsection4.4" ng-click="subsection4.4=!subsection4.4">
 						<div class="panel-heading">
-							SSO Login -<small> Single Sign-on Configuration </small>
+							SSO Login - Single Sign-on Configuration
 						</div>
 					</a>
 
@@ -365,10 +369,10 @@
 					</div>
 				</div>
 
-				<div class="panel panel-primary">
+				<div class="panel panel-info">
 					<a href="#" ng-model="subsection4.5" ng-click="subsection4.5=!subsection4.5">
 						<div class="panel-heading">
-							Web Console -<small> Email Server Configuration </small>
+							Web Console - Email Server Configuration
 						</div>
 					</a>
 
@@ -432,7 +436,7 @@
 					</div>
 				</div>
 
-				<div class="panel panel-primary">
+				<div class="panel panel-info">
 					<a href="#" ng-model="subsection4.6" ng-click="subsection4.6=!subsection4.6">
 						<div class="panel-heading">
 							Quota Settings
