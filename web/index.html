@@ -19,7 +19,7 @@
 		<div class="form-group">
 			<label for="environment" class="col-sm-1 control-label">Environment</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" ng-model="environment" name="environment" placeholder="Environment">
+				<input type="text" class="form-control" ng-model="environment" placeholder="Environment">
 			</div>
 		</div>
 	</form>
@@ -35,31 +35,31 @@
 	  		<div class="form-group">
 			    <label for="vSphereAddressLabel" class="col-sm-4 control-label">vSphere Address</label>
 			    <div class="col-sm-4">
-			      <input type="text" class="form-control" ng-model="vSphereAddress" name="vSphereAddress" placeholder="vSphere IP/Hostname">
+			      <input type="text" class="form-control" ng-model="data.newVSphereInfo.vSphereAddress" placeholder="vSphere IP/Hostname">
 			    </div>
 			  </div>
 				<div class="form-group">
 					<label for="username" class="col-sm-4 control-label">vSphere Username</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="vSphereUserName" name="vSphereUserName" placeholder="vSphere Client UserName">
+						<input type="text" class="form-control" ng-model="data.newVSphereInfo.vSphereUserName" placeholder="vSphere Client UserName">
 					</div>
 				</div>
 			  <div class="form-group">
 			    <label for="vSpherePassword" class="col-sm-4 control-label">vSphere Password</label>
 			    <div class="col-sm-4">
-			      <input type="password" class="form-control" ng-model="vSpherePassword" name="vSpherePassword" placeholder="vSphere Client Password">
+			      <input type="password" class="form-control" ng-model="data.newVSphereInfo.vSpherePassword" placeholder="vSphere Client Password">
 			    </div>
 			  </div>
 				<div class="form-group">
 					<label for="svrusername" class="col-sm-4 control-label">vSphere Service Account Username</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="svrUserName" name="svrUserName" placeholder="vSphere Service Account Username">
+						<input type="text" class="form-control" ng-model="data.newVSphereInfo.svrUserName" placeholder="vSphere Service Account Username">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="vSpherePassword" class="col-sm-4 control-label">vSphere Sevice Account Password</label>
 					<div class="col-sm-4">
-						<input type="password" class="form-control" ng-model="svrPassword" name="svrPassword" placeholder="vSphere Service Account Password">
+						<input type="password" class="form-control" ng-model="data.newVSphereInfo.svrPassword" placeholder="vSphere Service Account Password">
 					</div>
 				</div>
 			</form>
@@ -81,31 +81,31 @@
 				<div class="form-group">
 					<label for="netMask" class="col-sm-4 control-label">Netmask</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="netMask" name="netMask" placeholder="Netmask for the network">
+						<input type="text" class="form-control" ng-model="data.networkInfo.netMask" placeholder="Netmask for the network">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="defaultGateway" class="col-sm-4 control-label">Default Gateway</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="defaultGateway" name="defaultGateway" placeholder="Default Gateway">
+						<input type="text" class="form-control" ng-model="data.networkInfo.defaultGateway" placeholder="Default Gateway">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="dnsServers" class="col-sm-4 control-label">DNS Server/s</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="dnsServers" name="dnsServers" placeholder="DNS Servers (Comma seperated)">
+						<input type="text" class="form-control" ng-model="data.networkInfo.dnsServers" placeholder="DNS Servers (Comma seperated)">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="ntpServers" class="col-sm-4 control-label">NTP Server/s</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="ntpServers" name="ntpServers" placeholder="NTP Servers (Comma Seperated)">
+						<input type="text" class="form-control" ng-model="data.networkInfo.ntpServers" placeholder="NTP Servers (Comma Seperated)">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="vSphereSubnet" class="col-sm-4 control-label">Subnet</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="vSphereSubnet" name="vSphereSubnet" placeholder="vSphere Subnet with Mask, ex: 10.10.10.10/23">
+						<input type="text" class="form-control" ng-model="data.networkInfo.vSphereSubnet" placeholder="vSphere Subnet with Mask, ex: 10.10.10.10/23">
 					</div>
 				</div>
 			</form>
@@ -127,31 +127,31 @@
 					<div class="form-group">
 						<label for="vSphereDataCenterName" class="col-sm-4 control-label">Datacenter Name</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="vSphereDataCenterName" name="vSphereDataCenterName" placeholder="vSphere Datacenter Name">
+							<input type="text" class="form-control" ng-model="data.newVSphereEnvInfo.vSphereDataCenterName" placeholder="vSphere Datacenter Name">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="vSphereClusterName" class="col-sm-4 control-label">Cluster Name</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="vSphereClusterName" name="vSphereClusterName" placeholder="vSphere Cluster Name">
+							<input type="text" class="form-control" ng-model="data.newVSphereEnvInfo.vSphereClusterName" placeholder="vSphere Cluster Name">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="vSphereDataStoreNames" class="col-sm-4 control-label">Data Store Name</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="vSphereDataStoreNames" name="vSphereDataStoreNames" placeholder="vSphere Data Store Name/s">
+							<input type="text" class="form-control" ng-model="data.newVSphereEnvInfo.vSphereDataStoreNames" placeholder="vSphere Data Store Name/s">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="vSphereResourcePoolName" class="col-sm-4 control-label">Resource Pool Name</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="vSphereResourcePoolName" name="vSphereResourcePoolName" placeholder="vSphere Resource Pool Name">
+							<input type="text" class="form-control" ng-model="data.newVSphereEnvInfo.vSphereResourcePoolName" placeholder="vSphere Resource Pool Name">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="vSphereNetworkName" class="col-sm-4 control-label">vSphere Network Name</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="vSphereNetworkName" name="vSphereNetworkName" placeholder="vSphere Network Name">
+							<input type="text" class="form-control" ng-model="data.newVSphereEnvInfo.vSphereNetworkName" placeholder="vSphere Network Name">
 						</div>
 					</div>
 				</form>
@@ -174,90 +174,90 @@
 				<div class="form-group">
 					<label for="opsMgrIPAddress" class="col-sm-4 control-label">Ops Manager IP Address</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="opsMgrIPAddress" name="opsMgrIPAddress" placeholder="Ops Manager IP Address">
+						<input type="text" class="form-control" ng-model="data.mandatoryInfo.opsMgrIPAddress" placeholder="Ops Manager IP Address">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="opsMgrUserName" class="col-sm-4 control-label">OPS Manager SSH UserName</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="opsMgrUserName" name="opsMgrUserName" value="tempest" disabled>
+						<input type="text" class="form-control" ng-model="data.mandatoryInfo.opsMgrUserName" value="tempest" disabled>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="opsMgrPassword" class="col-sm-4 control-label">OPS Manager SSH Password</label>
 					<div class="col-sm-4">
-						<input type="password" class="form-control" ng-model="opsMgrPassword" name="opsMgrPassword" placeholder="OPS Manager SSH Password">
+						<input type="password" class="form-control" ng-model="data.mandatoryInfo.opsMgrPassword" placeholder="OPS Manager SSH Password">
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="externalLoadBalancer" class="col-sm-4 control-label">External Load Balancer?</label>
 					<div class="col-sm-4">
-						<input type="checkbox" ng-model="externalLoadBalancer" name="externalLoadBalancer">
+						<input type="checkbox" ng-model="data.mandatoryInfo.externalLoadBalancer">
 					</div>
 				</div>
-				<div class="check-element animate-hide" ng-hide="externalLoadBalancer">
+				<div class="check-element animate-hide" ng-hide="data.mandatoryInfo.externalLoadBalancer">
 					<div class="form-group">
 						<label for="haproxyIPs" class="col-sm-4 control-label">HAProxy IP/s</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="haproxyIPs" name="haproxyIPs" placeholder="HAProxy IP (Comma Seperated)">
+							<input type="text" class="form-control" ng-model="data.mandatoryInfo.haproxyIPs" placeholder="HAProxy IP (Comma Seperated)">
 						</div>
 					</div>
 				</div>
-				<div class="check-element animate-hide" ng-show="externalLoadBalancer">
+				<div class="check-element animate-hide" ng-show="data.mandatoryInfo.externalLoadBalancer">
 					<div class="form-group">
 						<label for="externalLBIPs" class="col-sm-4 control-label">External LoadBalancer IP/s</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="externalLBIPs" name="externalLBIPs" placeholder="External Load Balancer IP (Comma Seperated)">
+							<input type="text" class="form-control" ng-model="data.mandatoryInfo.externalLBIPs" placeholder="External Load Balancer IP (Comma Seperated)">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="externalAppsDomain" class="col-sm-4 control-label">External Applications Domain</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="externalAppsDomain" name="externalAppsDomain" placeholder="External Applications Domain">
+							<input type="text" class="form-control" ng-model="data.mandatoryInfo.externalAppsDomain" placeholder="External Applications Domain">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="externalSystemDomain" class="col-sm-4 control-label">External System Domain</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="externalSystemDomain" name="externalSystemDomain" placeholder="External System Domain">
+							<input type="text" class="form-control" ng-model="data.mandatoryInfo.externalSystemDomain" placeholder="External System Domain">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="routerIPs" class="col-sm-4 control-label">Router IP/s</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="routerIPs" name="routerIPs" placeholder="Router IP (Comma Seperated)">
+						<input type="text" class="form-control" ng-model="data.mandatoryInfo.routerIPs" placeholder="Router IP (Comma Seperated)">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="excludedIPRanges" class="col-sm-4 control-label">Excluded IP Ranges</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="excludedIPRanges" name="excludedIPRanges" placeholder="Excluded IP Ranges">
+						<input type="text" class="form-control" ng-model="data.mandatoryInfo.excludedIPRanges" placeholder="Excluded IP Ranges">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="systemDomain" class="col-sm-4 control-label">System Domain</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="systemDomain" name="systemDomain" placeholder="prodapp.cf.companyname.net or .com">
+						<input type="text" class="form-control" ng-model="data.mandatoryInfo.systemDomain" placeholder="prodapp.cf.companyname.net or .com">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="applicationDomain" class="col-sm-4 control-label">Applications Domain</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="applicationDomain" name="applicationDomain" placeholder="prodapp.cfapps.companyname.net or .com">
+						<input type="text" class="form-control" ng-model="data.mandatoryInfo.applicationDomain" placeholder="prodapp.cfapps.companyname.net or .com">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="publicCert" class="col-sm-4 control-label">Public Certificate</label>
 					<div class="col-sm-4">
-						<input type="textbox" class="form-control" ng-model="publicCert" name="publicCert" placeholder="Public certificate used for generating the wild card certificates">
+						<input type="textbox" class="form-control" ng-model="data.mandatoryInfo.publicCert" placeholder="Public certificate used for generating the wild card certificates">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="privateCert" class="col-sm-4 control-label">Private Certificate</label>
 					<div class="col-sm-4">
-						<input type="textbox" class="form-control" ng-model="privateCert" name="privateCert" placeholder="Private certificate generated for the wild card certificates">
+						<input type="textbox" class="form-control" ng-model="data.mandatoryInfo.privateCert" placeholder="Private certificate generated for the wild card certificates">
 					</div>
 				</div>
 			</form>
@@ -288,13 +288,13 @@
 							<div class="form-group">
 								<label for="ccDBEncryptionKey" class="col-sm-4 control-label">Cloud Controller DB Encryption Key</label>
 								<div class="col-sm-4">
-									<input type="textbox" class="form-control" ng-model="ccDBEncryptionKey" name="ccDBEncryptionKey" placeholder="Cloud Controller DB Encryption Key">
+									<input type="textbox" class="form-control" ng-model="data.optionalInfo.ccDBEncryptionKey" placeholder="Cloud Controller DB Encryption Key">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="maxFileSize" class="col-sm-4 control-label">Maximum file upload size (MB)</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="maxFileSize" name="maxFileSize" placeholder="Maximum file upload size (MB), default 256MB">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.maxFileSize" placeholder="Maximum file upload size (MB), default 256MB">
 								</div>
 							</div>
 						</form>
@@ -313,7 +313,7 @@
 							<div class="form-group">
 								<label for="ssoURL" class="col-sm-4 control-label">SSO URL</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="ssoURL" name="ssoURL" placeholder="SSO URL">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.ssoURL" placeholder="SSO URL">
 								</div>
 							</div>
 						</form>
@@ -332,55 +332,55 @@
 							<div class="form-group">
 								<label for="replyToEmail" class="col-sm-4 control-label">Reply-To Email</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="replyToEmail" name="replyToEmail" placeholder="Reply-To Email Address">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.replyToEmail" placeholder="Reply-To Email Address">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="fromEmail" class="col-sm-4 control-label">From Email</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="fromEmail" name="fromEmail" placeholder="From Email Address">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.fromEmail" placeholder="From Email Address">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="smtpServerAddress" class="col-sm-4 control-label">Address of SMTP Server</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="smtpServerAddress" name="smtpServerAddress" placeholder="SMTP Server Address">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.smtpServerAddress" placeholder="SMTP Server Address">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="smtpServerPort" class="col-sm-4 control-label">Port of SMTP Server</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="smtpServerPort" name="smtpServerPort" placeholder="SMTP Server Port">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.smtpServerPort" placeholder="SMTP Server Port">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="heloDomain" class="col-sm-4 control-label">HELO Domain</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="heloDomain" name="heloDomain" placeholder="HELO Domain">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.heloDomain" placeholder="HELO Domain">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="smtpAuthRequired" class="col-sm-4 control-label">SMTP Authentication Required?</label>
 								<div class="col-sm-4">
-									<input type="checkbox" ng-model="smtpAuthRequired" name="smtpAuthRequired">
+									<input type="checkbox" ng-model="data.optionalInfo.smtpAuthRequired">
 								</div>
 							</div>
 						</form>
 					</div>
 
-					<div class="check-element animate-hide" ng-show="smtpAuthRequired">
+					<div class="check-element animate-hide" ng-show="data.optionalInfo.smtpAuthRequired">
 						<form class="form-horizontal" role="form">
 							<div class="form-group">
 								<label for="smtpServerUsername" class="col-sm-4 control-label">SMTP Server Username</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="smtpServerUsername" name="smtpServerUsername" placeholder="SMTP Server Username">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.smtpServerUsername" placeholder="SMTP Server Username">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="smtpServerPassword" class="col-sm-4 control-label">SMTP Server Password</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="smtpServerPassword" name="smtpServerPassword" placeholder="SMTP Server Password">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.smtpServerPassword" placeholder="SMTP Server Password">
 								</div>
 							</div>
 					  </form>
@@ -399,13 +399,13 @@
 							<div class="form-group">
 								<label for="appMemory" class="col-sm-4 control-label">App Memory (MB)</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="appMemory" name="appMemory" placeholder="App Memory (MB)">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.appMemory" placeholder="App Memory (MB)">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="serviceInstances" class="col-sm-4 control-label">Service Instances</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="serviceInstances" name="serviceInstances" placeholder="Service Instances">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.serviceInstances" placeholder="Service Instances">
 								</div>
 							</div>
 						</form>
@@ -436,80 +436,12 @@
 		var MandatoryInfo = $resource();
 		var OptionalInfo = $resource();
 
-		$scope.data = new Data();
+		$scope.data = new Data({mandatoryInfo:{opsMgrUserName:"tempest"}});
 
 		$scope.save = function() {
-			var newData = new Data();
-
-			var newVSphereInfo = new vSphereInfo();
-			newVSphereInfo.vSphereAddress = $scope.vSphereAddress;
-			newVSphereInfo.vSphereUserName = $scope.vSphereUserName;
-			newVSphereInfo.vSpherePassword = $scope.vSpherePassword;
-			newVSphereInfo.svrUserName = $scope.svrUserName;
-			newVSphereInfo.svrPassword = $scope.svrPassword;
-
-			var networkInfo = new NetworkInfo();
-			networkInfo.netMask = $scope.netMask;
-			networkInfo.defaultGateway = $scope.defaultGateway;
-			networkInfo.dnsServers = $scope.dnsServers;
-			networkInfo.ntpServers = $scope.ntpServers;
-			networkInfo.vSphereSubnet = $scope.vSphereSubnet;
-
-			var newVSphereEnvInfo = new vSphereEnvInfo();
-			newVSphereEnvInfo.vSphereDataCenterName = $scope.vSphereDataCenterName;
-			newVSphereEnvInfo.vSphereClusterName = $scope.vSphereClusterName;
-			newVSphereEnvInfo.vSphereDataStoreNames = $scope.vSphereDataStoreNames;
-			newVSphereEnvInfo.vSphereResourcePoolName = $scope.vSphereResourcePoolName;
-			newVSphereEnvInfo.vSphereNetworkName = $scope.vSphereNetworkName;
-
-			var mandatoryInfo = new MandatoryInfo();
-			mandatoryInfo.opsMgrIPAddress = $scope.opsMgrIPAddress;
-			mandatoryInfo.opsMgrUserName = $scope.opsMgrUserName;
-			mandatoryInfo.opsMgrPassword = $scope.opsMgrPassword;
-			mandatoryInfo.routerIPs = $scope.routerIPs;
-			mandatoryInfo.excludedIPRanges = $scope.excludedIPRanges;
-
-			mandatoryInfo.externalLoadBalancer = $scope.externalLoadBalancer;
-
-			if($scope.externalLoadBalancer) {
-				mandatoryInfo.externalLBIPs = $scope.externalLBIPs;
-				mandatoryInfo.externalAppsDomain = $scope.externalAppsDomain;
-				mandatoryInfo.externalSystemDomain = $scope.externalSystemDomain;
-			} else {
-				mandatoryInfo.haproxyIPs = $scope.haproxyIPs;
-			}
-			mandatoryInfo.systemDomain = $scope.systemDomain;
-			mandatoryInfo.applicationDomain = $scope.applicationDomain;
-			mandatoryInfo.publicCert = $scope.publicCert;
-			mandatoryInfo.privateCert = $scope.privateCert;
-
-			var optionalInfo = new OptionalInfo();
-			optionalInfo.ccDBEncryptionKey = $scope.ccDBEncryptionKey;
-			optionalInfo.maxFileSize = $scope.maxFileSize;
-			optionalInfo.ssoURL = $scope.ssoURL;
-			optionalInfo.replyToEmail = $scope.replyToEmail;
-			optionalInfo.fromEmail = $scope.fromEmail;
-			optionalInfo.smtpServerAddress = $scope.smtpServerAddress;
-			optionalInfo.smtpServerPort = $scope.smtpServerPort;
-			optionalInfo.heloDomain = $scope.heloDomain;
-			optionalInfo.smtpAuthRequired = $scope.smtpAuthRequired;
-
-			if($scope.smtpAuthRequired) {
-				optionalInfo.smtpServerUsername = $scope.smtpServerUsername;
-				optionalInfo.smtpServerPassword = $scope.smtpServerPassword;
-			}
-
-			optionalInfo.appMemory = $scope.appMemory;
-			optionalInfo.serviceInstances = $scope.serviceInstances;
-
-			// newData.newVSphereInfo = newVSphereInfo;
-			// newData.networkInfo = networkInfo;
-			// newData.newVSphereEnvInfo = newVSphereEnvInfo;
-			// newData.mandatoryInfo = mandatoryInfo;
-			// newData.optionalInfo = optionalInfo;
-
-			newData.environment = $scope.environment;
-			newData.$save();
+			$scope.data.$save(function(msg, headers){
+				console.log($scope.data.id);
+			});
 		}
 
 	}]);
