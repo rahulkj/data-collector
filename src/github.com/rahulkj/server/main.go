@@ -6,9 +6,16 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"io/ioutil"
 	"os"
 	"github.com/gorilla/mux"
 )
+
+// book model
+type data struct {
+	Environment  string `json:"environment"`
+	Id     int    `json:"id"`
+}
 
 const (
 	HostVar = "VCAP_APP_HOST"
@@ -57,6 +64,46 @@ func (fn handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Printf("%s %s %s %d", r.RemoteAddr, r.Method, r.URL, 200)
 }
 
+func parseDataRequest(r *http.Request) (data, *handlerError) {
+	// the book payload is in the request body
+	requestData, e := ioutil.ReadAll(r.Body)
+	log.Printf("the requestData is %v\n", requestData)
+	if e != nil {
+		return data{}, &handlerError{e, "Could not read request", http.StatusBadRequest}
+	}
+
+	// turn the request body (JSON) into a book object
+	var payload data
+	e = json.Unmarshal(requestData, &payload)
+	log.Printf("the paylod id is %v\n", e)
+	if e != nil {
+		return data{}, &handlerError{e, "Could not parse JSON", http.StatusBadRequest}
+	}
+
+	return payload, nil
+}
+
+func saveData(w http.ResponseWriter, r *http.Request) (interface{}, *handlerError) {
+	payload, e := parseDataRequest(r)
+	if e != nil {
+		return nil, e
+	}
+
+	// it's our job to assign IDs, ignore what (if anything) the client sent
+	payload.Id = getNextId()
+	log.Printf("the paylod id is %v\n", payload.Id)
+	log.Printf("the environment is %v\n", payload.Environment)
+
+	// we return the book we just made so the client can see the ID if they want
+	return payload, nil
+}
+
+var id = 0
+func getNextId() int {
+	id += 1
+	return id
+}
+
 func main() {
 	dir := flag.String("directory", "web/", "directory of web files")
 	flag.Parse()
@@ -68,6 +115,7 @@ func main() {
 	// setup routes
 	router := mux.NewRouter()
 	router.Handle("/", http.RedirectHandler("/static/", 302))
+	router.Handle("/data", handler(saveData)).Methods("POST")
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static", fileHandler))
 	http.Handle("/", router)
 
