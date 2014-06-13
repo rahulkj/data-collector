@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"log"
+	"code.google.com/p/log4go"
 	"net/http"
 	"io/ioutil"
 	"os"
@@ -34,6 +34,8 @@ type handler func(w http.ResponseWriter, r *http.Request) (interface{}, *handler
 
 // attach the standard ServeHTTP method to our handler so the http library can call it
 func (fn handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	log := make(log4go.Logger)
+	log.AddFilter("stdout", log4go.DEBUG, log4go.NewConsoleLogWriter())
 	// here we could do some prep work before calling the handler if we wanted to
 
 	// call the actual handler
@@ -41,12 +43,12 @@ func (fn handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	// check for errors
 	if err != nil {
-		log.Printf("ERROR: %v\n", err.Error)
+		log.Error("ERROR: %v\n", err.Error)
 		http.Error(w, fmt.Sprintf(`{"error":"%s"}`, err.Message), err.Code)
 		return
 	}
 	if response == nil {
-		log.Printf("ERROR: response from method is nil\n")
+		log.Debug("ERROR: response from method is nil\n")
 		http.Error(w, "Internal server error. Check the logs.", http.StatusInternalServerError)
 		return
 	}
@@ -61,13 +63,15 @@ func (fn handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// send the response and log
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(bytes)
-	log.Printf("%s %s %s %d", r.RemoteAddr, r.Method, r.URL, 200)
+	log.Debug("%s %s %s %d", r.RemoteAddr, r.Method, r.URL, 200)
 }
 
 func parseDataRequest(r *http.Request) (data, *handlerError) {
+	log := make(log4go.Logger)
+	log.AddFilter("stdout", log4go.DEBUG, log4go.NewConsoleLogWriter())
 	// the book payload is in the request body
 	requestData, e := ioutil.ReadAll(r.Body)
-	log.Printf("the requestData is %v\n", requestData)
+
 	if e != nil {
 		return data{}, &handlerError{e, "Could not read request", http.StatusBadRequest}
 	}
@@ -75,7 +79,7 @@ func parseDataRequest(r *http.Request) (data, *handlerError) {
 	// turn the request body (JSON) into a book object
 	var payload data
 	e = json.Unmarshal(requestData, &payload)
-	log.Printf("the paylod id is %v\n", e)
+
 	if e != nil {
 		return data{}, &handlerError{e, "Could not parse JSON", http.StatusBadRequest}
 	}
@@ -84,6 +88,9 @@ func parseDataRequest(r *http.Request) (data, *handlerError) {
 }
 
 func saveData(w http.ResponseWriter, r *http.Request) (interface{}, *handlerError) {
+	log := make(log4go.Logger)
+	log.AddFilter("stdout", log4go.DEBUG, log4go.NewConsoleLogWriter())
+
 	payload, e := parseDataRequest(r)
 	if e != nil {
 		return nil, e
@@ -91,8 +98,9 @@ func saveData(w http.ResponseWriter, r *http.Request) (interface{}, *handlerErro
 
 	// it's our job to assign IDs, ignore what (if anything) the client sent
 	payload.Id = getNextId()
-	log.Printf("the paylod id is %v\n", payload.Id)
-	log.Printf("the environment is %v\n", payload.Environment)
+
+	log.Debug("the paylod id is %v\n", payload.Id)
+	log.Debug("the environment is %v\n", payload.Environment)
 
 	// we return the book we just made so the client can see the ID if they want
 	return payload, nil
@@ -105,6 +113,9 @@ func getNextId() int {
 }
 
 func main() {
+	log := make(log4go.Logger)
+	log.AddFilter("stdout", log4go.DEBUG, log4go.NewConsoleLogWriter())
+
 	dir := flag.String("directory", "web/", "directory of web files")
 	flag.Parse()
 
@@ -123,7 +134,7 @@ func main() {
 	if port = os.Getenv(PortVar); port == "" {
 		port = "8080"
 	}
-	log.Printf("Listening at port %v\n", port)
+	log.Debug("Listening at port %v\n", port)
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		panic(err)
 	}
