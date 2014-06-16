@@ -11,7 +11,7 @@
 <script src="scripts/angular.js"></script>
 <script src="scripts/angular-resource.js"></script>
 <script src="scripts/ui-bootstrap-tpls-0.11.0.min.js"></script>
-<body ng-controller="MainCtl">
+<body ng-controller="DataCollectorCtrl">
 
 	<h1>PCF Data Collection Sheet</h1>
 	<br>
@@ -19,7 +19,7 @@
 		<div class="form-group">
 			<label for="environment" class="col-sm-1 control-label">Environment</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" ng-model="environment" placeholder="Environment">
+				<input type="text" class="form-control" ng-model="data.environment" placeholder="Environment">
 			</div>
 		</div>
 	</form>
@@ -35,31 +35,31 @@
 	  		<div class="form-group">
 			    <label for="vSphereAddressLabel" class="col-sm-4 control-label">vSphere Address</label>
 			    <div class="col-sm-4">
-			      <input type="text" class="form-control" ng-model="data.newVSphereInfo.vSphereAddress" placeholder="vSphere IP/Hostname">
+			      <input type="text" class="form-control" ng-model="data.vSphereInfo.vSphereAddress" placeholder="vSphere IP/Hostname">
 			    </div>
 			  </div>
 				<div class="form-group">
 					<label for="username" class="col-sm-4 control-label">vSphere Username</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="data.newVSphereInfo.vSphereUserName" placeholder="vSphere Client UserName">
+						<input type="text" class="form-control" ng-model="data.vSphereInfo.vSphereUserName" placeholder="vSphere Client UserName">
 					</div>
 				</div>
 			  <div class="form-group">
 			    <label for="vSpherePassword" class="col-sm-4 control-label">vSphere Password</label>
 			    <div class="col-sm-4">
-			      <input type="password" class="form-control" ng-model="data.newVSphereInfo.vSpherePassword" placeholder="vSphere Client Password">
+			      <input type="password" class="form-control" ng-model="data.vSphereInfo.vSpherePassword" placeholder="vSphere Client Password">
 			    </div>
 			  </div>
 				<div class="form-group">
 					<label for="svrusername" class="col-sm-4 control-label">vSphere Service Account Username</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" ng-model="data.newVSphereInfo.svrUserName" placeholder="vSphere Service Account Username">
+						<input type="text" class="form-control" ng-model="data.vSphereInfo.svrUserName" placeholder="vSphere Service Account Username">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="vSpherePassword" class="col-sm-4 control-label">vSphere Sevice Account Password</label>
 					<div class="col-sm-4">
-						<input type="password" class="form-control" ng-model="data.newVSphereInfo.svrPassword" placeholder="vSphere Service Account Password">
+						<input type="password" class="form-control" ng-model="data.vSphereInfo.svrPassword" placeholder="vSphere Service Account Password">
 					</div>
 				</div>
 			</form>
@@ -123,38 +123,38 @@
 
 		<div ng-show="section3" id="section3">
 			<br>
-				<form class="form-horizontal" role="form">
-					<div class="form-group">
-						<label for="vSphereDataCenterName" class="col-sm-4 control-label">Datacenter Name</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="data.newVSphereEnvInfo.vSphereDataCenterName" placeholder="vSphere Datacenter Name">
-						</div>
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="dataCenterName" class="col-sm-4 control-label">Datacenter Name</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" ng-model="data.envInfo.dataCenterName" placeholder="vSphere Datacenter Name">
 					</div>
-					<div class="form-group">
-						<label for="vSphereClusterName" class="col-sm-4 control-label">Cluster Name</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="data.newVSphereEnvInfo.vSphereClusterName" placeholder="vSphere Cluster Name">
-						</div>
+				</div>
+				<div class="form-group">
+					<label for="clusterName" class="col-sm-4 control-label">Cluster Name</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" ng-model="data.envInfo.clusterName" placeholder="vSphere Cluster Name">
 					</div>
-					<div class="form-group">
-						<label for="vSphereDataStoreNames" class="col-sm-4 control-label">Data Store Name</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="data.newVSphereEnvInfo.vSphereDataStoreNames" placeholder="vSphere Data Store Name/s">
-						</div>
+				</div>
+				<div class="form-group">
+					<label for="dataStoreNames" class="col-sm-4 control-label">Data Store Name</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" ng-model="data.envInfo.dataStoreNames" placeholder="vSphere Data Store Name/s">
 					</div>
-					<div class="form-group">
-						<label for="vSphereResourcePoolName" class="col-sm-4 control-label">Resource Pool Name</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="data.newVSphereEnvInfo.vSphereResourcePoolName" placeholder="vSphere Resource Pool Name">
-						</div>
+				</div>
+				<div class="form-group">
+					<label for="resourcePoolName" class="col-sm-4 control-label">Resource Pool Name</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" ng-model="data.envInfo.resourcePoolName" placeholder="vSphere Resource Pool Name">
 					</div>
-					<div class="form-group">
-						<label for="vSphereNetworkName" class="col-sm-4 control-label">vSphere Network Name</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" ng-model="data.newVSphereEnvInfo.vSphereNetworkName" placeholder="vSphere Network Name">
-						</div>
+				</div>
+				<div class="form-group">
+					<label for="networkName" class="col-sm-4 control-label">vSphere Network Name</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" ng-model="data.envInfo.networkName" placeholder="vSphere Network Name">
 					</div>
-				</form>
+				</div>
+			</form>
 		</div>
 	</div>
 
@@ -332,59 +332,59 @@
 							<div class="form-group">
 								<label for="replyToEmail" class="col-sm-4 control-label">Reply-To Email</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="data.optionalInfo.replyToEmail" placeholder="Reply-To Email Address">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.email.replyToEmail" placeholder="Reply-To Email Address">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="fromEmail" class="col-sm-4 control-label">From Email</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="data.optionalInfo.fromEmail" placeholder="From Email Address">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.email.fromEmail" placeholder="From Email Address">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="smtpServerAddress" class="col-sm-4 control-label">Address of SMTP Server</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="data.optionalInfo.smtpServerAddress" placeholder="SMTP Server Address">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.email.smtpServerAddress" placeholder="SMTP Server Address">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="smtpServerPort" class="col-sm-4 control-label">Port of SMTP Server</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="data.optionalInfo.smtpServerPort" placeholder="SMTP Server Port">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.email.smtpServerPort" placeholder="SMTP Server Port">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="heloDomain" class="col-sm-4 control-label">HELO Domain</label>
 								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="data.optionalInfo.heloDomain" placeholder="HELO Domain">
+									<input type="text" class="form-control" ng-model="data.optionalInfo.email.heloDomain" placeholder="HELO Domain">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="smtpAuthRequired" class="col-sm-4 control-label">SMTP Authentication Required?</label>
 								<div class="col-sm-4">
-									<input type="checkbox" ng-model="data.optionalInfo.smtpAuthRequired">
+									<input type="checkbox" ng-model="data.optionalInfo.email.smtpAuthRequired">
 								</div>
 							</div>
 						</form>
-					</div>
 
-					<div class="check-element animate-hide" ng-show="data.optionalInfo.smtpAuthRequired">
-						<form class="form-horizontal" role="form">
-							<div class="form-group">
-								<label for="smtpServerUsername" class="col-sm-4 control-label">SMTP Server Username</label>
-								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="data.optionalInfo.smtpServerUsername" placeholder="SMTP Server Username">
+						<div class="check-element animate-hide" ng-show="data.optionalInfo.email.smtpAuthRequired">
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="smtpServerUsername" class="col-sm-4 control-label">SMTP Server Username</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control" ng-model="data.optionalInfo.email.smtpServerUsername" placeholder="SMTP Server Username">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label for="smtpServerPassword" class="col-sm-4 control-label">SMTP Server Password</label>
-								<div class="col-sm-4">
-									<input type="text" class="form-control" ng-model="data.optionalInfo.smtpServerPassword" placeholder="SMTP Server Password">
+								<div class="form-group">
+									<label for="smtpServerPassword" class="col-sm-4 control-label">SMTP Server Password</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control" ng-model="data.optionalInfo.email.smtpServerPassword" placeholder="SMTP Server Password">
+									</div>
 								</div>
-							</div>
-					  </form>
-					</div>
+						  </form>
+						</div>
+					</div>	
 				</div>
 
 				<div class="panel panel-info">
@@ -427,16 +427,11 @@
 	var myapp = new angular.module("myapp", ["ngResource"]);
 
 	// inject the $resource dependency here
-	myapp.controller("MainCtl", ["$scope", "$resource", function($scope, $resource){
+	myapp.controller("DataCollectorCtrl", ["$scope", "$resource", function($scope, $resource){
 
 		var Data = $resource("/data/:id", {id: '@id'}, {});
-		var vSphereInfo = $resource();
-		var NetworkInfo = $resource();
-		var vSphereEnvInfo = $resource();
-		var MandatoryInfo = $resource();
-		var OptionalInfo = $resource();
 
-		$scope.data = new Data({mandatoryInfo:{opsMgrUserName:"tempest"}});
+		$scope.data = new Data({mandatoryInfo:{opsMgrUserName:'tempest'}});
 
 		$scope.save = function() {
 			$scope.data.$save(function(msg, headers){
@@ -455,7 +450,6 @@
 				if(fields[i] == "") {
 					fields[i].focus();
 					break;
-					alert("please enter value for " + labels[i].innerHTML)
 				}
 			}
 		}

@@ -9,13 +9,8 @@ import (
 	"io/ioutil"
 	"os"
 	"github.com/gorilla/mux"
+	"github.com/rahulkj/domain"
 )
-
-// book model
-type data struct {
-	Environment  string `json:"environment"`
-	Id     int    `json:"id"`
-}
 
 const (
 	HostVar = "VCAP_APP_HOST"
@@ -66,22 +61,22 @@ func (fn handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Debug("%s %s %s %d", r.RemoteAddr, r.Method, r.URL, 200)
 }
 
-func parseDataRequest(r *http.Request) (data, *handlerError) {
+func parseDataRequest(r *http.Request) (domain.Data, *handlerError) {
 	log := make(log4go.Logger)
 	log.AddFilter("stdout", log4go.DEBUG, log4go.NewConsoleLogWriter())
 	// the book payload is in the request body
 	requestData, e := ioutil.ReadAll(r.Body)
 
 	if e != nil {
-		return data{}, &handlerError{e, "Could not read request", http.StatusBadRequest}
+		return domain.Data{}, &handlerError{e, "Could not read request", http.StatusBadRequest}
 	}
 
 	// turn the request body (JSON) into a book object
-	var payload data
+	var payload domain.Data
 	e = json.Unmarshal(requestData, &payload)
 
 	if e != nil {
-		return data{}, &handlerError{e, "Could not parse JSON", http.StatusBadRequest}
+		return domain.Data{}, &handlerError{e, "Could not parse JSON", http.StatusBadRequest}
 	}
 
 	return payload, nil
@@ -96,20 +91,14 @@ func saveData(w http.ResponseWriter, r *http.Request) (interface{}, *handlerErro
 		return nil, e
 	}
 
-	// it's our job to assign IDs, ignore what (if anything) the client sent
-	payload.Id = getNextId()
+	payload = domain.SaveData(payload)
 
+	// it's our job to assign IDs, ignore what (if anything) the client sent
 	log.Debug("the paylod id is %v\n", payload.Id)
 	log.Debug("the environment is %v\n", payload.Environment)
 
 	// we return the book we just made so the client can see the ID if they want
 	return payload, nil
-}
-
-var id = 0
-func getNextId() int {
-	id += 1
-	return id
 }
 
 func main() {
@@ -127,6 +116,7 @@ func main() {
 	router := mux.NewRouter()
 	router.Handle("/", http.RedirectHandler("/static/", 302))
 	router.Handle("/data", handler(saveData)).Methods("POST")
+	router.Handle("/data/{id}", handler(saveData)).Methods("POST")
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static", fileHandler))
 	http.Handle("/", router)
 
